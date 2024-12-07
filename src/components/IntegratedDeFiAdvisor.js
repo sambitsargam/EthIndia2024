@@ -63,10 +63,6 @@ function IntegratedDeFiAdvisor() {
         text: "Welcome to your DeFi Advisor! How can I assist you today?",
         sender: "ai",
       },
-      {
-        text: "You can ask me about DeFi strategies or select a token to view its price history and news.",
-        sender: "ai",
-      },
     ]);
   };
 

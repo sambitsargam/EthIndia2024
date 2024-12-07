@@ -11,7 +11,6 @@ const app = express();
 app.use(cors()); // Enable CORS for all origins
 app.use(express.json());
 
-// Serve static files from the React app
 
 // Initialize OpenAI client
 const openai = new OpenAI({
