@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from "./components/LoginPage";
 import Home from './components/Home';
 import IntegratedDeFiAdvisor from "./components/IntegratedDeFiAdvisor";
-import WidgetPage from './components/Widgets';
 
 const theme = extendTheme({
   config: {
@@ -27,7 +26,6 @@ function App() {
         <ChakraProvider theme={theme}>
           <CSSReset />
           <Routes>
-            <Route path="/widget" element={<WidgetPage authToken={authToken} handleLogout={handleLogout} />} />
             <Route path="/defi" element={<IntegratedDeFiAdvisor authToken={authToken} handleLogout={handleLogout} />} />
             <Route path="/" element={<LoginPage setAuthToken={setAuthToken} authToken={authToken} handleLogout={handleLogout} />} />
             <Route path="/home" element={authToken ? <Home authToken={authToken} handleLogout={handleLogout} /> : <Navigate to="/" />} />
