@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
 const axios = require("axios");
 const OpenAI = require("openai");
@@ -100,61 +100,7 @@ app.get("/api/price-history/:token", async (req, res) => {
   }
 });
 
-// Helper function to determine if a transaction is a "whale" transaction
-const isWhaleTransaction = (transaction, threshold) => {
-  const value = parseFloat(transaction.value);
-  return value >= threshold;
-};
 
-const largeTransactions = [];
-
-// API route to fetch whale alerts
-app.get("/api/whale-alerts/:block", async (req, res) => {
-  const { block } = req.params;
-  try {
-    // Define what constitutes a "whale" transaction
-
-    if (largeTransactions.length > 0) {
-      res.json({ transactions: largeTransactions });
-      return;
-    }
-
-    const lastBlocks = 100;
-    const whaleThreshold = 100000000000000000000; // Example threshold, adjust based on the token's units
-    const blockNumber = 20494714;
-    for (let i = blockNumber; i > blockNumber - lastBlocks; i--) {
-      const blockscoutAPIUrl = `https://base.blockscout.com/api/v2/blocks/${i}/transactions`;
-
-      try {
-        const response = await axios.get(blockscoutAPIUrl);
-
-        console.log("blockNumber " + i);
-        if (response.data && response.data.items) {
-          const transactions = response.data.items;
-
-          // Filter for large transactions
-          const filteredTransactions = transactions.filter((tx) =>
-            isWhaleTransaction(tx, whaleThreshold)
-          );
-
-          largeTransactions.push(...filteredTransactions);
-        } else {
-          throw new Error("Invalid response from Blockscout API");
-        }
-      } catch (error) {
-        console.error(`Error fetching transactions for block ${i}:`, error);
-      }
-    }
-
-    res.json({ transactions: largeTransactions });
-  } catch (error) {
-    console.error("Error fetching whale alerts:", error);
-    res.status(500).json({
-      error: "Failed to fetch whale alerts",
-      details: error.message,
-    });
-  }
-});
 
 // API route to fetch cryptocurrency news
 app.get("/api/news/:token", async (req, res) => {

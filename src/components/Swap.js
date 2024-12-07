@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useOkto } from "okto-sdk-react";
-import { useNavigate } from "react-router-dom";
 
 const SwapPage = () => {
-  const navigate = useNavigate();
   const { createWallet, transferTokens } = useOkto();
   const [swapResponse, setSwapResponse] = useState(null);
   const [error, setError] = useState(null);
