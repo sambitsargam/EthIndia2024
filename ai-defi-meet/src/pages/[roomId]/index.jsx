@@ -277,7 +277,7 @@ export default function Home({ token }) {
 
 export const getServerSideProps = async (ctx) => {
   const accessToken = new AccessToken({
-    apiKey: process.env.API_KEY,
+    apiKey: "ak_Vemhe2aX5N5w382v",
     roomId: ctx.params.roomId,
 
     role: Role.HOST,
