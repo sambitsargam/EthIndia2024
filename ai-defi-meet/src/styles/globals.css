@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.chat-box {
+  width: 32%;
+  height: 88vh; /* Full screen height */
+  border: 2px solid #1d4ed8; /* blue border */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 16px;
+}
+
+.messages-container {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto; /* To allow scrolling if there are many messages */
+}
+
+.input-container {
+  display: flex;
+  padding: 8px;
+}
+
+.message-input {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  padding: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.send-button {
+  background-color: #1d4ed8;
+  border: none;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.send-button:disabled {
+  background-color: #ddd;
+}
