@@ -73,7 +73,7 @@ const LoginPage = ({ setAuthToken, authToken, handleLogout }) => {
 
   return (
     <div style={containerStyle}>
-      <h1 style={{ color: "#333", marginBottom: "20px" }}>Welcome to  DEFI AI Hub</h1>
+      <h1 style={{ color: "#333", marginBottom: "20px" }}>Welcome to SimpleFi Hub</h1>
       <p style={{ textAlign: "center", color: "#555", marginBottom: "20px" }}>
         Seamlessly manage your finances, explore investments, and get advice from our AI advisor.
       </p>
