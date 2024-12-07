@@ -84,7 +84,7 @@ app.get("/api/price-history/:token", async (req, res) => {
       `https://api.coingecko.com/api/v3/coins/${token}/market_chart`,
       {
         params: {
-          vs_currency: "eur",
+          vs_currency: "usd",
           days: "30",
           interval: "daily",
         },

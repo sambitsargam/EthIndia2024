@@ -6,6 +6,8 @@ import LoginPage from "./components/LoginPage";
 import Home from './components/Home';
 import IntegratedDeFiAdvisor from "./components/IntegratedDeFiAdvisor";
 import SwapTokenPage from "./components/Swap";
+import VaultManager from './components/VaultManager';
+
 const theme = extendTheme({
   config: {
     initialColorMode: "light",
@@ -13,6 +15,7 @@ const theme = extendTheme({
   },
 });
 const OKTO_CLIENT_API_KEY = "709deb29-fbf4-4415-9967-f66ac0033f55";
+
 function App() {
   console.log('App component rendered');
   const [authToken, setAuthToken] = useState(null);
@@ -20,6 +23,7 @@ function App() {
     console.log("setting auth token to null")
     setAuthToken(null); // Clear the authToken
   };
+
   return (
     <Router>
       <OktoProvider apiKey={OKTO_CLIENT_API_KEY} buildType={BuildType.SANDBOX}>
@@ -30,6 +34,7 @@ function App() {
             <Route path="/defi" element={<IntegratedDeFiAdvisor authToken={authToken} handleLogout={handleLogout} />} />
             <Route path="/" element={<LoginPage setAuthToken={setAuthToken} authToken={authToken} handleLogout={handleLogout} />} />
             <Route path="/home" element={authToken ? <Home authToken={authToken} handleLogout={handleLogout} /> : <Navigate to="/" />} />
+            <Route path="/vault" element={<VaultManager />} />
           </Routes>
         </ChakraProvider>
 
