@@ -105,7 +105,7 @@ const LoginPage = ({ setAuthToken, authToken, handleLogout }) => {
         </button>
         <button
           style={primaryButtonStyle}
-          onClick={() => navigate("/valut")}
+          onClick={() => navigate("/vault")}
         >
           Private Vault
         </button>
